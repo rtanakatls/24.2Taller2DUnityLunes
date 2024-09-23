@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
     [SerializeField] private float speed;
+    [SerializeField] private float boostFactor;
 
     private void Awake()
     {
@@ -21,6 +22,13 @@ public class PlayerMovement : MonoBehaviour
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        rb2d.velocity = new Vector2(horizontal, vertical).normalized*speed;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            rb2d.velocity = new Vector2(horizontal, vertical).normalized * speed * boostFactor;
+        }
+        else
+        {
+            rb2d.velocity = new Vector2(horizontal, vertical).normalized * speed;
+        }
     }
 }
