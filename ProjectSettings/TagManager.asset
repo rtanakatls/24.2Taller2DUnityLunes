@@ -8,6 +8,7 @@ TagManager:
   - PlayerBullet
   - Enemy
   - CameraTrigger
+  - DoorTrigger
   layers:
   - Default
   - TransparentFX
