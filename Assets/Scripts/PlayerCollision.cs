@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    private PlayerLifeController playerLifeController;
+
+    private void Awake()
+    {
+        playerLifeController=GetComponent<PlayerLifeController>();
+    }
+
+    private void TakeDamage(int damage)
+    {
+        playerLifeController.ChangeLife(-damage);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Hexagon"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<HexagonCounter>().IncreaseCounter();
+            TakeDamage(collision.gameObject.GetComponent<DamageController>().Damage);
         }
     }
 }
