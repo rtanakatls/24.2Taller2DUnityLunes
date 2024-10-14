@@ -15,6 +15,6 @@ public class ChangeSceneButton : MonoBehaviour
 
     void ChangeScene()
     {
-        SceneManager.LoadScene(sceneName);
+        GameObject.Find("Cinematic").GetComponent<StartTimeline>().LoadScene(sceneName);
     }
 }
